@@ -8,10 +8,11 @@ from dotenv import load_dotenv
 
 from realtime_transit.extract.errors import ExtractionError
 from realtime_transit.extract.tfl import fetch_arrivals
+from realtime_transit.streaming.topics import VEHICLE_POSITIONS
 from realtime_transit.transform.canonical import to_canonical
 
 LINES = ["central", "victoria", "bakerloo"]
-TOPIC = "transit.vehicle_positions"
+TOPIC = VEHICLE_POSITIONS
 POLL_INTERVAL_SECONDS = 30
 
 

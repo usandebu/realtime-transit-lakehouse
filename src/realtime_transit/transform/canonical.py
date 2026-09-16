@@ -1,11 +1,5 @@
 def to_canonical(arrival: dict) -> dict:
-    """Map a raw TfL Arrivals record to the pipeline's canonical vehicle-position schema.
-
-    lat/lon are intentionally left unresolved here: joining naptan_id against the
-    stations reference table is a Silver-layer concern (Spark broadcast join), not
-    something Bronze should do — Bronze must stay a faithful, join-free copy of the
-    source event.
-    """
+    """Map a raw TfL Arrivals record to the canonical vehicle-position schema."""
     return {
         "vehicle_id": arrival["vehicleId"],
         "feed_source": "tfl",
