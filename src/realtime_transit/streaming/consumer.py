@@ -2,7 +2,9 @@ import json
 
 from confluent_kafka import Consumer
 
-TOPIC = "transit.vehicle_positions"
+from realtime_transit.streaming.topics import VEHICLE_POSITIONS
+
+TOPIC = VEHICLE_POSITIONS
 
 
 def main() -> None:
@@ -14,7 +16,7 @@ def main() -> None:
         }
     )
     consumer.subscribe([TOPIC])
-    print(f"Listening on '{TOPIC}'. Ctrl+C to stop.")
+    print(f"Listening on '{TOPIC}'.")
     try:
         while True:
             msg = consumer.poll(timeout=1.0)
